@@ -1,0 +1,4 @@
+rootProject.name = "Rad Chart"
+include ':app'
+include ':core'
+include ':skeleton'

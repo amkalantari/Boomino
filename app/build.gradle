@@ -1,0 +1,153 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+android {
+
+    compileSdkVersion sdk.compileSdk
+    buildToolsVersion sdk.buildTools
+
+
+    defaultConfig {
+        applicationId "com.amiir.radchart"
+        minSdkVersion sdk.minSdk
+        targetSdkVersion sdk.targetSdk
+        multiDexEnabled true
+        versionCode sdk.versionCode
+        versionName sdk.versionName
+        vectorDrawables.useSupportLibrary = true
+        setProperty("archivesBaseName", "Tazminchi-vName-" + versionName + "-vCode-" + versionCode)
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    flavorDimensions 'default'
+
+
+    lintOptions {
+        disable 'TypographyFractions','TypographyQuotes'
+        enable 'RtlHardcoded','RtlCompat', 'RtlEnabled'
+        checkOnly 'NewApi', 'InlinedApi'
+        quiet true
+        abortOnError false
+        ignoreWarnings true
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+        freeCompilerArgs += ["-Xopt-in=kotlin.RequiresOptIn"]
+    }
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    api deps.kotlin
+    api deps.core_ktx
+    api deps.appCompat
+    api deps.material
+    api deps.constraint
+    api deps.viewModel
+    api deps.recycler
+    api deps.cardView
+    api deps.nav_fragment
+    api deps.nav_ui
+    api deps.multi_dex
+    api deps.legacy
+    api deps.preference
+    api deps.localbroadcastmanager
+    api deps.date_picker
+
+    /**
+     * Library
+     * */
+    implementation project(path: ':core')
+    implementation project(path: ':skeleton')
+
+
+    /**
+     * Glide
+     * */
+    api deps.glide
+    api deps.glide_okhttp
+    kapt deps.glide_kapt
+
+    /**
+     * Gms
+     * */
+    api deps.auth
+    api deps.auth_phone
+    api deps.identity_service
+
+    /**
+     * Other
+     * */
+    api deps.indicator
+    api deps.materialratingbar
+    implementation "com.android.support:support-compat:28.0.0"
+
+    /**
+     * Firebase
+     * */
+    implementation platform('com.google.firebase:firebase-bom:27.0.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-messaging-ktx'
+
+
+    /**
+     * Dagger V2
+     * */
+    api deps.dagger
+    api deps.dagger_support
+    api deps.legacy_support
+    kapt deps.dagger_Kapt
+
+    /**
+     * Paging And LifeCycle Library
+     * */
+    api deps.coroutines_android
+    api deps.coroutines_core
+    api deps.lifeCycle_run
+    api deps.lifecycle_livedata
+    api deps.paging
+
+    /**
+     * Test Library
+     * */
+    kaptAndroidTest deps.dataBinding_test
+
+    testImplementation deps.junit
+    testImplementation deps.okhttp_test
+
+    androidTestImplementation deps.core_ktx
+    androidTestImplementation deps.rules
+    androidTestImplementation deps.runner
+    androidTestImplementation deps.espresso
+    androidTestImplementation deps.core_test
+    androidTestImplementation deps.ext_junit
+}
