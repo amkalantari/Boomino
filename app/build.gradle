@@ -13,14 +13,14 @@ android {
 
 
     defaultConfig {
-        applicationId "com.amiir.radchart"
+        applicationId "com.amiir.boomino"
         minSdkVersion sdk.minSdk
         targetSdkVersion sdk.targetSdk
         multiDexEnabled true
         versionCode sdk.versionCode
         versionName sdk.versionName
         vectorDrawables.useSupportLibrary = true
-        setProperty("archivesBaseName", "Tazminchi-vName-" + versionName + "-vCode-" + versionCode)
+        setProperty("archivesBaseName", "Boomino-vName-" + versionName + "-vCode-" + versionCode)
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

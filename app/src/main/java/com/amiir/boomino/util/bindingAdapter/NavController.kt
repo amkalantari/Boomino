@@ -1,4 +1,4 @@
-package com.amiir.radchart.util.bindingAdapter
+package com.amiir.boomino.util.bindingAdapter
 
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections

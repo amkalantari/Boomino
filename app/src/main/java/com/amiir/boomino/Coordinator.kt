@@ -1,8 +1,8 @@
-package com.amiir.radchart
+package com.amiir.boomino
 
 import android.app.Activity
 import android.content.Intent
-import com.amiir.radchart.ui.MainActivity
+import com.amiir.boomino.ui.MainActivity
 import com.core.utils.SettingManager
 
 

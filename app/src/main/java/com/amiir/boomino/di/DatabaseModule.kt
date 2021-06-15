@@ -1,4 +1,4 @@
-package com.amiir.radchart.di
+package com.amiir.boomino.di
 
 import android.app.Application
 import com.core.db.AppDatabase

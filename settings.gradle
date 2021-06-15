@@ -1,4 +1,4 @@
-rootProject.name = "Rad Chart"
+rootProject.name = "Boomino"
 include ':app'
 include ':core'
 include ':skeleton'

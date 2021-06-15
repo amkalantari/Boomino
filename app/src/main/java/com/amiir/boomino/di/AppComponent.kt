@@ -1,8 +1,8 @@
-package com.amiir.radchart.di
+package com.amiir.boomino.di
 
 import android.app.Application
-import com.amiir.radchart.ui.MainActivity
-import com.amiir.radchart.App
+import com.amiir.boomino.ui.MainActivity
+import com.amiir.boomino.App
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton

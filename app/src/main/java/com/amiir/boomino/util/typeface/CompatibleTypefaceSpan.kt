@@ -1,4 +1,4 @@
-package com.amiir.radchart.util.typeface
+package com.amiir.boomino.util.typeface
 
 import android.graphics.Paint
 import android.graphics.Typeface

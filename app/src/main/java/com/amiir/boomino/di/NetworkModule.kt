@@ -1,11 +1,11 @@
-package com.amiir.radchart.di
+package com.amiir.boomino.di
 
 import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import com.core.utils.SettingManager
 import com.google.gson.GsonBuilder
-import com.amiir.radchart.util.ConnectivityInterceptor
+import com.amiir.boomino.util.ConnectivityInterceptor
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient

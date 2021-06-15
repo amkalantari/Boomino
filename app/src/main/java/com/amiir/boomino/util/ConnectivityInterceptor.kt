@@ -1,11 +1,11 @@
-package com.amiir.radchart.util
+package com.amiir.boomino.util
 
 import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
-import com.amiir.radchart.BuildConfig
+import com.amiir.boomino.BuildConfig
 import com.core.utils.SettingManager
 import okhttp3.Interceptor
 import okhttp3.Request
