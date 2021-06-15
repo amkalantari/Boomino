@@ -1,8 +1,9 @@
 package com.amiir.boomino.di
 
 import android.app.Application
-import com.amiir.boomino.ui.MainActivity
+import com.amiir.boomino.ui.main.MainActivity
 import com.amiir.boomino.App
+import com.amiir.boomino.ui.login.LoginActivity
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -22,6 +23,7 @@ interface AppComponent {
 
     //Activity
     fun inject(app: MainActivity)
+    fun inject(app: LoginActivity)
 
     @Component.Builder
     interface Builder {

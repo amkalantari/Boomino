@@ -3,7 +3,7 @@ package com.amiir.boomino
 import android.content.Intent
 import android.os.Handler
 import android.os.Looper
-import com.amiir.boomino.ui.MainActivity
+import com.amiir.boomino.ui.main.MainActivity
 import com.core.base.BaseApp
 import com.core.db.AppDatabase
 import com.core.utils.SettingManager

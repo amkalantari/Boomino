@@ -2,7 +2,7 @@ package com.amiir.boomino
 
 import android.app.Activity
 import android.content.Intent
-import com.amiir.boomino.ui.MainActivity
+import com.amiir.boomino.ui.main.MainActivity
 import com.core.utils.SettingManager
 
 

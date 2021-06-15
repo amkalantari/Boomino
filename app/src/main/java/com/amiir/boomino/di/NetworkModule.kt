@@ -54,7 +54,7 @@ class NetworkModule {
     @Singleton
     fun provideRetrofitBase(client: OkHttpClient, gsonBuilder: GsonBuilder): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("amiir")
+            .baseUrl("https://mock.boomino.ir/")
             .addConverterFactory(GsonConverterFactory.create(gsonBuilder.create()))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(client)
