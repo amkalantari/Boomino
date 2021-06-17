@@ -2,11 +2,11 @@ package com.core.widget
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.BindingAdapter
-import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -89,6 +89,12 @@ class ImageViewCustom : AppCompatImageView {
         fun ImageViewCustom.setImageUrl(value: String?) {
             if (!value.isNullOrEmpty())
                 setImage(value)
+        }
+
+        @JvmStatic
+        @BindingAdapter("image_drawable")
+        fun ImageViewCustom.setImageDrawable(value: Drawable?) {
+            setImageDrawable(value)
         }
 
         @JvmStatic

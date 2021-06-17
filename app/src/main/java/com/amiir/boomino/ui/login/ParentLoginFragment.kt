@@ -25,6 +25,10 @@ class ParentLoginFragment : ParentSharedFragment<LoginViewModel, FragmentParentL
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.userNameTextInput.setText("user")
+        binding.passWordTextInput.setText("user")
+
         binding.parentButton.setOnDelayClickListener {
             viewModel.requestParentLogin(
                 binding.userNameTextInput.getText(),

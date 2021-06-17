@@ -1,5 +1,6 @@
 package com.amiir.boomino.ui.main
 
+import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.amiir.boomino.R
 import com.amiir.boomino.databinding.ActivityMainBinding
@@ -12,6 +13,11 @@ class MainActivity : ParentActivity<MainViewModel, ActivityMainBinding>() {
     @Inject
     lateinit var factory: MainViewModelFactory
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        actionBar?.setHomeButtonEnabled(true)
+    }
+
     override fun getResourceLayoutId(): Int = R.layout.activity_main
 
     override fun inject() {
@@ -21,5 +27,6 @@ class MainActivity : ParentActivity<MainViewModel, ActivityMainBinding>() {
     override fun getViewModelClass(): Class<MainViewModel> = MainViewModel::class.java
 
     override fun getFactory(): ViewModelProvider.Factory = factory
+
 
 }

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.core.widget.TextInputLayoutCustom
+            android:id="@+id/user_name_text_input"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/dimen_16"
+            android:layout_marginEnd="@dimen/dimen_16"
+            android:layout_marginBottom="@dimen/dimen_32"
+            android:fontFamily="@font/iranyekan"
+            android:hint="@string/login_user_name"
+            android:inputType="text"
+            android:layoutDirection="rtl"
+            android:text="user"
+            android:textColor="@color/colorTextPrimary"
+            android:textSize="@dimen/font_size_14"
+            app:boxBackgroundMode="outline"
+            app:errorTextAppearance="@style/ErrorTextAppearance"
+            app:helperTextEnabled="true"
+            app:helperTextTextAppearance="@style/HelperTextAppearance"
+            app:hintAnimationEnabled="false"
+            app:hintTextAppearance="@style/HintInputTextAppearance"
+            app:layout_constraintBottom_toTopOf="@+id/pass_word_text_input"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:placeholderText="@string/user_name_place_holder" />
+
+        <com.amiir.boomino.widget.FilterCheckBoxList
+            android:id="@+id/checkbox_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/dimen_16"
+            app:layout_constraintBottom_toTopOf="@id/createChildButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/user_name_text_input" />
+
+
+        <com.core.widget.ButtonCustom
+            android:id="@+id/createChildButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_margin="@dimen/dimen_16"
+            android:background="@drawable/background_border_primary"
+            android:text="Create Child Account"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

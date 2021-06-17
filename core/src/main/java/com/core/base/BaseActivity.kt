@@ -19,7 +19,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.core.R
-import com.core.dto.ErrorType
 import com.core.dto.NetworkState
 import com.core.dto.location.Coordinate
 import com.core.dto.location.LocationState
@@ -172,23 +171,16 @@ abstract class BaseActivity<E : ViewDataBinding> : AppCompatActivity() {
 
     open fun handleFailureStatus(status: NetworkState, onShowMessage: (String) -> Unit) {
         hideProgress(status.tag)
-        when (status.type) {
-            ErrorType.Authorization, ErrorType.Forbidden -> {
-                (application as BaseApp).logoutAndRestart()
-            }
-            else -> {
-                onShowMessage(
-                    if (status.msg.isEmpty())
-                        if (status.type.value != 0) {
-                            getString(status.type.value)
-                        } else {
-                            ""
-                        }
-                    else
-                        status.msg
-                )
-            }
-        }
+        onShowMessage(
+            if (status.msg.isEmpty())
+                if (status.type.value != 0) {
+                    getString(status.type.value)
+                } else {
+                    ""
+                }
+            else
+                status.msg
+        )
     }
 
     private fun setStatusBarColor(color: Int) {

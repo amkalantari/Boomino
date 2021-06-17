@@ -29,7 +29,6 @@
             android:layoutDirection="rtl"
             android:textColor="@color/colorTextPrimary"
             android:textSize="@dimen/font_size_14"
-
             app:boxBackgroundMode="outline"
             app:errorTextAppearance="@style/ErrorTextAppearance"
             app:helperTextEnabled="true"
@@ -55,7 +54,6 @@
             android:layoutDirection="rtl"
             android:textColor="@color/colorTextPrimary"
             android:textSize="@dimen/font_size_14"
-
             app:boxBackgroundMode="outline"
             app:errorTextAppearance="@style/ErrorTextAppearance"
             app:helperTextEnabled="true"

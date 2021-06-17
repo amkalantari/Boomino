@@ -21,7 +21,6 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.core.R
-import com.core.dto.ErrorType
 import com.core.dto.NetworkState
 import com.ethanhua.skeleton.Skeleton
 import com.ethanhua.skeleton.ViewSkeletonScreen
@@ -55,7 +54,11 @@ abstract class BaseFragment<E : ViewDataBinding> : Fragment() {
         inject()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         binding = DataBindingUtil.inflate(
             LayoutInflater.from(requireContext()),
             getResourceLayoutId(),
@@ -79,7 +82,8 @@ abstract class BaseFragment<E : ViewDataBinding> : Fragment() {
     }
 
     open fun hideKeyboard(view: View) {
-        val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val imm =
+            requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
@@ -138,7 +142,11 @@ abstract class BaseFragment<E : ViewDataBinding> : Fragment() {
         }
     }
 
-    open fun permissionsRequest(permissions: Array<String>, granted: PermissionGranted, denied: PermissionDenied) {
+    open fun permissionsRequest(
+        permissions: Array<String>,
+        granted: PermissionGranted,
+        denied: PermissionDenied
+    ) {
         var hasPermission: Boolean = true
         val deniedPermissions = mutableListOf<String>()
         for (permission in permissions) {
@@ -168,13 +176,15 @@ abstract class BaseFragment<E : ViewDataBinding> : Fragment() {
                 .show()
         }
     }
+
     open fun showProgress(tag: String) {
-        if (!tag.contains("getAllOrder")){
+        if (!tag.contains("getAllOrder")) {
             skeletonScreen?.show()
         }
     }
+
     open fun hideProgress(tag: String) {
-        if (!tag.contains("getAllOrder")){
+        if (!tag.contains("getAllOrder")) {
             skeletonScreen?.hide()
         }
     }
@@ -269,23 +279,18 @@ abstract class BaseFragment<E : ViewDataBinding> : Fragment() {
 
     open fun handleFailureStatus(status: NetworkState, onShowMessage: (String) -> Unit) {
         hideProgress(status.tag)
+
         if (isAdded)
-            when (status.type) {
-                ErrorType.Authorization, ErrorType.Forbidden -> {
-                    (requireActivity().application as BaseApp).logoutAndRestart()
-                }
-                else -> {
-                    onShowMessage(
-                        if (status.msg.isEmpty())
-                            if (status.type.value != 0) {
-                                getString(status.type.value)
-                            } else {
-                                ""
-                            }
-                        else
-                            status.msg
-                    )
-                }
-            }
+            onShowMessage(
+                if (status.msg.isEmpty())
+                    if (status.type.value != 0) {
+                        getString(status.type.value)
+                    } else {
+                        ""
+                    }
+                else
+                    status.msg
+            )
+
     }
 }

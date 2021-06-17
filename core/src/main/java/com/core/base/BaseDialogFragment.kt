@@ -19,7 +19,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
 import com.core.R
-import com.core.dto.ErrorType
 import com.core.dto.NetworkState
 import com.core.widget.ImageViewCustom
 import com.ethanhua.skeleton.Skeleton
@@ -322,22 +321,15 @@ abstract class BaseDialogFragment<E : ViewDataBinding> : DialogFragment() {
 
     open fun handleFailureStatus(status: NetworkState, onShowMessage: (String) -> Unit) {
         hideDialogProgress(status.tag)
-        when (status.type) {
-            ErrorType.Authorization, ErrorType.Forbidden -> {
-                (requireActivity().application as BaseApp).logoutAndRestart()
-            }
-            else -> {
-                onShowMessage(
-                    if (status.msg.isEmpty())
-                        if (status.type.value != 0) {
-                            getString(status.type.value)
-                        } else {
-                            ""
-                        }
-                    else
-                        status.msg
-                )
-            }
-        }
+        onShowMessage(
+            if (status.msg.isEmpty())
+                if (status.type.value != 0) {
+                    getString(status.type.value)
+                } else {
+                    ""
+                }
+            else
+                status.msg
+        )
     }
 }

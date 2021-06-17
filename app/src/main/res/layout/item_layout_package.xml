@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.core.dto.PackageDto" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        style="@style/CardViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_16">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layoutDirection="rtl">
+
+            <com.core.widget.ImageViewCustom
+                android:id="@+id/icon"
+                image_drawable="@{item.icon}"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="@dimen/dimen_16"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.core.widget.TextViewCustom
+                android:id="@+id/appname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_16"
+                android:layout_marginTop="@dimen/dimen_16"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:fontFamily="@font/iranyekan_bold"
+                android:text="@{item.appname}"
+                android:textColor="@color/colorTextPrimary"
+                android:textDirection="rtl"
+                android:textSize="@dimen/font_size_14"
+                app:layout_constraintEnd_toStartOf="@id/icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.core.widget.TextViewCustom
+                android:id="@+id/pname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_16"
+                android:layout_marginTop="@dimen/dimen_8"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:fontFamily="@font/iranyekan"
+                android:text="@{item.pname}"
+                android:textColor="@color/colorTextPrimary"
+                android:textDirection="rtl"
+                android:textSize="@dimen/font_size_12"
+                app:layout_constraintEnd_toStartOf="@id/icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/appname" />
+
+            <com.core.widget.TextViewCustom
+                android:id="@+id/versionName"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:fontFamily="@font/iranyekan"
+                android:gravity="center"
+                android:paddingStart="@dimen/dimen_8"
+                android:paddingTop="@dimen/dimen_4"
+                android:paddingEnd="@dimen/dimen_8"
+                android:paddingBottom="@dimen/dimen_4"
+                android:text="@{item.versionName}"
+                android:textSize="@dimen/font_size_12"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/icon" />
+
+            <com.core.widget.TextViewCustom
+                android:id="@+id/versionCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_16"
+                android:fontFamily="@font/iranyekan_bold"
+                android:text="@{String.valueOf(item.versionCode)}"
+                android:textColor="@color/colorPrimary"
+                android:textDirection="ltr"
+                android:textSize="@dimen/font_size_14"
+                app:layout_constraintBottom_toBottomOf="@+id/versionName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/versionName" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.core.dto.PackageDto" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        style="@style/CardViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_16">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/filterLayoutMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layoutDirection="rtl">
+
+            <CheckBox
+                android:id="@+id/filter_checkbox"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:button="@drawable/filter_choicechips_checkbox"
+                android:checked="false"
+                android:clickable="false"
+                android:layout_margin="@dimen/dimen_16"
+                android:gravity="center_vertical" />
+
+
+            <com.core.widget.ImageViewCustom
+                android:id="@+id/icon"
+                image_drawable="@{item.icon}"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="@dimen/dimen_16"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:layout_marginBottom="@dimen/dimen_16"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/filter_checkbox"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.core.widget.TextViewCustom
+                android:id="@+id/appname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_16"
+                android:layout_marginTop="@dimen/dimen_16"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:fontFamily="@font/iranyekan_bold"
+                android:text="@{item.appname}"
+                android:textColor="@color/colorTextPrimary"
+                android:textDirection="rtl"
+                android:textSize="@dimen/font_size_14"
+                app:layout_constraintEnd_toStartOf="@id/icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.core.widget.TextViewCustom
+                android:id="@+id/pname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_16"
+                android:layout_marginTop="@dimen/dimen_8"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:fontFamily="@font/iranyekan"
+                android:text="@{item.pname}"
+                android:textColor="@color/colorTextPrimary"
+                android:textDirection="rtl"
+                android:textSize="@dimen/font_size_12"
+                app:layout_constraintEnd_toStartOf="@id/icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/appname" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>
