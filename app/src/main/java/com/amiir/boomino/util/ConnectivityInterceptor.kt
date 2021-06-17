@@ -5,10 +5,8 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
-import com.amiir.boomino.BuildConfig
 import com.core.utils.SettingManager
 import okhttp3.Interceptor
-import okhttp3.Request
 import okhttp3.Response
 import java.io.IOException
 
@@ -49,23 +47,23 @@ class ConnectivityInterceptor(
             if (!isNetworkAvailable(app)) {
                 throw NoConnectivityException()
             }
-            val request = requestHeader(originalRequest, settingManager)
-            return chain.proceed(request)
+//            val request = requestHeader(originalRequest, settingManager)
+            return chain.proceed(originalRequest.build())
         }
     }
 
-    companion object {
-        fun requestHeader(request: Request.Builder, settingManager: SettingManager): Request {
-            val oAuth = settingManager.getAccessToken()
-
-            return request
-                .addHeader("Accept", "application/json")
-                .addHeader("Content-type", "application/json")
-                .addHeader("Authorization", "Bearer $oAuth")
-                .addHeader("app-version", BuildConfig.VERSION_NAME)
-                .build()
-
-        }
-    }
+//    companion object {
+//        fun requestHeader(request: Request.Builder, settingManager: SettingManager): Request {
+//            val oAuth = settingManager.getAccessToken()
+//
+//            return request
+////                .addHeader("Accept", "application/json")
+////                .addHeader("Content-type", "application/json")
+////                .addHeader("Authorization", "Bearer $oAuth")
+////                .addHeader("app-version", BuildConfig.VERSION_NAME)
+//                .build()
+//
+//        }
+//    }
 
 }

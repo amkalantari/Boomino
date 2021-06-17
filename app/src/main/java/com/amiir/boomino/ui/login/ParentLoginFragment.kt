@@ -34,4 +34,19 @@ class ParentLoginFragment : ParentSharedFragment<LoginViewModel, FragmentParentL
 
     }
 
+    override fun hideProgress(tag: String) {
+        super.hideProgress(tag)
+        binding.loading = false
+    }
+
+    override fun showProgress(tag: String) {
+        super.showProgress(tag)
+        binding.loading = true
+    }
+
+    override fun showError(tag: String, error: String) {
+        super.showError(tag, error)
+        showMessage(tag)
+    }
+
 }

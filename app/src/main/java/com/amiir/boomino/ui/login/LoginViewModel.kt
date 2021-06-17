@@ -4,6 +4,7 @@ import androidx.lifecycle.*
 import com.core.base.BaseViewModel
 import com.core.dto.LoginRequestDto
 import com.core.dto.NetworkState
+import com.core.dto.ParentLoginResponse
 import com.core.repository.AccountRepository
 import com.core.utils.SettingManager
 
@@ -15,7 +16,7 @@ import com.core.utils.SettingManager
 abstract class LoginViewModel :
     BaseViewModel() {
 
-    abstract fun getParentLoginResponse(): LiveData<String>
+    abstract fun getParentLoginResponse(): LiveData<ParentLoginResponse>
 
     abstract fun requestParentLogin(username: String, password: String)
 
@@ -42,7 +43,7 @@ class LoginViewModelImpl(
         }
 
 
-    override fun getParentLoginResponse(): LiveData<String> =
+    override fun getParentLoginResponse(): LiveData<ParentLoginResponse> =
         Transformations.switchMap(parentLoginRepo) {
             it.onSuccess
         }

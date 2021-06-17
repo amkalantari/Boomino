@@ -6,6 +6,7 @@ import com.core.base.BaseObserver
 import com.core.base.BaseObserver.Companion.networkStatus
 import com.core.base.ResponseAsync
 import com.core.dto.LoginRequestDto
+import com.core.dto.ParentLoginResponse
 import com.core.utils.SingleLiveEvent
 
 
@@ -14,14 +15,14 @@ import com.core.utils.SingleLiveEvent
  * Drunk, Fix Later
  */
 abstract class AccountRepository : BaseObserver {
-    abstract fun parentLogin(loginRequestDto: LoginRequestDto): ResponseAsync<String>
+    abstract fun parentLogin(loginRequestDto: LoginRequestDto): ResponseAsync<ParentLoginResponse>
 }
 
 class AccountRepositoryImpl(private val accountApi: AccountApi) : AccountRepository() {
 
-    override fun parentLogin(loginRequestDto: LoginRequestDto): ResponseAsync<String> {
+    override fun parentLogin(loginRequestDto: LoginRequestDto): ResponseAsync<ParentLoginResponse> {
         val tag = "${this::class.java.simpleName}_parentLogin"
-        val data = SingleLiveEvent<String>()
+        val data = SingleLiveEvent<ParentLoginResponse>()
         showProgressAction(tag)
         addExecutorThreads(accountApi.parentLogin(
             loginRequestDto.username,
