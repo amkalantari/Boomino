@@ -52,10 +52,10 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRetrofitBase(client: OkHttpClient, gsonBuilder: GsonBuilder): Retrofit {
+    fun provideRetrofitBase(client: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .baseUrl("https://mock.boomino.ir/")
-            .addConverterFactory(GsonConverterFactory.create(gsonBuilder.create()))
+            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(client)
             .build()

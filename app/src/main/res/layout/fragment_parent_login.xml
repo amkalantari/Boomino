@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="loading"
+            type="java.lang.Boolean" />
+
+    </data>
+
+    <com.core.widget.ConstraintCustom
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.core.widget.TextInputLayoutCustom
+            android:id="@+id/user_name_text_input"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/dimen_16"
+            android:layout_marginEnd="@dimen/dimen_16"
+            android:layout_marginBottom="@dimen/dimen_32"
+            android:fontFamily="@font/iranyekan"
+            android:hint="@string/login_user_name"
+            android:inputType="number"
+            android:layoutDirection="rtl"
+            android:textColor="@color/colorTextPrimary"
+            android:textSize="@dimen/font_size_14"
+
+            app:boxBackgroundMode="outline"
+            app:errorTextAppearance="@style/ErrorTextAppearance"
+            app:helperTextEnabled="true"
+            app:helperTextTextAppearance="@style/HelperTextAppearance"
+            app:hintAnimationEnabled="false"
+            app:hintTextAppearance="@style/HintInputTextAppearance"
+            app:layout_constraintBottom_toTopOf="@+id/pass_word_text_input"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:placeholderText="@string/user_name_place_holder" />
+
+        <com.core.widget.TextInputLayoutCustom
+            android:id="@+id/pass_word_text_input"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/dimen_16"
+            android:layout_marginEnd="@dimen/dimen_16"
+            android:fontFamily="@font/iranyekan"
+            android:hint="@string/login_pass_word"
+            android:inputType="number"
+            android:layoutDirection="rtl"
+            android:textColor="@color/colorTextPrimary"
+            android:textSize="@dimen/font_size_14"
+
+            app:boxBackgroundMode="outline"
+            app:errorTextAppearance="@style/ErrorTextAppearance"
+            app:helperTextEnabled="true"
+            app:helperTextTextAppearance="@style/HelperTextAppearance"
+            app:hintAnimationEnabled="false"
+            app:hintTextAppearance="@style/HintInputTextAppearance"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:placeholderText="@string/pass_word_place_holder" />
+
+        <com.core.widget.ButtonCustom
+            android:id="@+id/parentButton"
+            loading="@{loading}"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:layout_constraintTop_toBottomOf="@+id/pass_word_text_input"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/dimen_32"
+            android:layout_marginStart="@dimen/dimen_16"
+            android:layout_marginEnd="@dimen/dimen_16"
+            android:background="@drawable/background_border_primary"
+            android:text="@string/login_button_text"
+            android:textColor="@color/colorPrimary" />
+
+    </com.core.widget.ConstraintCustom>
+</layout>

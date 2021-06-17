@@ -17,7 +17,7 @@ abstract class LoginViewModel :
 
     abstract fun getParentLoginResponse(): LiveData<String>
 
-    abstract fun requestParentLogin(hashValue: String, mobile: String)
+    abstract fun requestParentLogin(username: String, password: String)
 
 }
 

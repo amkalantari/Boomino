@@ -1,9 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <data>
+
+        <variable
+            name="loading"
+            type="java.lang.Boolean" />
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
         android:layout_height="match_parent">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.core.widget.ButtonCustom
+            android:id="@+id/parentButton"
+            loading="@{loading}"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_margin="16dp"
+            android:background="@drawable/background_border_primary"
+            android:text="@string/parent_button_text"
+            android:textColor="@color/colorPrimary" />
+
+        <com.core.widget.ButtonCustom
+            android:id="@+id/childButton"
+            loading="@{loading}"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_margin="16dp"
+            android:background="@drawable/background_border_primary"
+            android:text="@string/child_button_text"
+            android:textColor="@color/colorPrimary" />
+
+    </LinearLayout>
+
 </layout>
