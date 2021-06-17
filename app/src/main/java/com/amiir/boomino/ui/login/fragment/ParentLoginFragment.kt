@@ -1,11 +1,13 @@
-package com.amiir.boomino.ui.login
+package com.amiir.boomino.ui.login.fragment
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.amiir.boomino.R
 import com.amiir.boomino.databinding.FragmentParentLoginBinding
+import com.amiir.boomino.ui.login.LoginViewModel
 import com.amiir.boomino.ui.main.MainActivity
+import com.amiir.boomino.util.KeyBoardHelper
 import com.core.parent.ParentSharedFragment
 
 class ParentLoginFragment : ParentSharedFragment<LoginViewModel, FragmentParentLoginBinding>() {
@@ -16,20 +18,29 @@ class ParentLoginFragment : ParentSharedFragment<LoginViewModel, FragmentParentL
 
     override fun getViewModelClass(): Class<LoginViewModel> = LoginViewModel::class.java
 
+    private var isFirstTime = true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.getParentLoginResponse().observe(this, {
-            startActivity(Intent(requireActivity(), MainActivity::class.java))
+            if (!isFirstTime) {
+                startActivity(
+                    Intent(requireActivity(), MainActivity::class.java).putExtra(
+                        "username",
+                        "parent"
+                    )
+                )
+                isFirstTime = true
+            }
         })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.userNameTextInput.setText("user")
-        binding.passWordTextInput.setText("user")
-
         binding.parentButton.setOnDelayClickListener {
+            isFirstTime = false
+            KeyBoardHelper(requireActivity()).closeKeyBoard()
             viewModel.requestParentLogin(
                 binding.userNameTextInput.getText(),
                 binding.passWordTextInput.getText()

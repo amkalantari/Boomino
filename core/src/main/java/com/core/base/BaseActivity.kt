@@ -20,8 +20,6 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.core.R
 import com.core.dto.NetworkState
-import com.core.dto.location.Coordinate
-import com.core.dto.location.LocationState
 import com.google.android.material.snackbar.Snackbar
 
 typealias PermissionGranted = (Array<String>) -> Unit
@@ -90,12 +88,6 @@ abstract class BaseActivity<E : ViewDataBinding> : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = title ?: ""
     }
-
-    open fun locationState(state: LocationState) {}
-
-    open fun locationUpdate(location: Coordinate) {}
-
-    open fun latestLocation(coordinate: Coordinate) {}
 
     open fun showProgress(tag: String) {}
 

@@ -16,8 +16,7 @@ class NoConnectivityException : IOException() {
 }
 
 class ConnectivityInterceptor(
-    val app: Application,
-    private var settingManager: SettingManager
+    val app: Application
 ) : Interceptor {
 
     @Suppress("DEPRECATION")
@@ -30,9 +29,7 @@ class ConnectivityInterceptor(
             return when {
                 actNw.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
                 actNw.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
-                //for other device how are able to connect with Ethernet
                 actNw.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
-                //for check internet over Bluetooth
                 actNw.hasTransport(NetworkCapabilities.TRANSPORT_BLUETOOTH) -> true
                 else -> false
             }
@@ -47,23 +44,8 @@ class ConnectivityInterceptor(
             if (!isNetworkAvailable(app)) {
                 throw NoConnectivityException()
             }
-//            val request = requestHeader(originalRequest, settingManager)
             return chain.proceed(originalRequest.build())
         }
     }
-
-//    companion object {
-//        fun requestHeader(request: Request.Builder, settingManager: SettingManager): Request {
-//            val oAuth = settingManager.getAccessToken()
-//
-//            return request
-////                .addHeader("Accept", "application/json")
-////                .addHeader("Content-type", "application/json")
-////                .addHeader("Authorization", "Bearer $oAuth")
-////                .addHeader("app-version", BuildConfig.VERSION_NAME)
-//                .build()
-//
-//        }
-//    }
 
 }

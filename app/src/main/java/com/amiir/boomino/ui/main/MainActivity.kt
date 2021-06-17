@@ -16,6 +16,12 @@ class MainActivity : ParentActivity<MainViewModel, ActivityMainBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         actionBar?.setHomeButtonEnabled(true)
+
+        if (intent.hasExtra("username")){
+            val username = intent.getStringExtra("username")!!
+            viewModel.setUsername(username)
+        }
+
     }
 
     override fun getResourceLayoutId(): Int = R.layout.activity_main

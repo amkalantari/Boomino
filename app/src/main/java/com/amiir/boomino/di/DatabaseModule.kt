@@ -2,7 +2,10 @@ package com.amiir.boomino.di
 
 import android.app.Application
 import com.core.db.AppDatabase
-import com.core.utils.*
+import com.core.utils.Preference
+import com.core.utils.PreferenceImpl
+import com.core.utils.SettingManager
+import com.core.utils.SettingManagerImpl
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -17,13 +20,8 @@ class DatabaseModule {
     }
 
     @Provides
-    fun provideSecurityHelper(): SecurityHelper {
-        return SecurityHelperImpl()
-    }
-
-    @Provides
-    fun providePreference(app: Application, securityHelper: SecurityHelper): Preference {
-        return PreferenceImpl(app, securityHelper)
+    fun providePreference(app: Application): Preference {
+        return PreferenceImpl(app)
     }
 
     @Provides

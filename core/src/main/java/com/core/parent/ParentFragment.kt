@@ -6,15 +6,10 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import androidx.databinding.ViewDataBinding
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.core.base.BaseFragment
 import com.core.base.BaseViewModel
 import com.core.dto.Status
-import com.core.dto.location.Coordinate
-import com.core.dto.location.LocationState
-import com.core.widget.TextInputLayoutCustom
-import java.lang.ref.WeakReference
 
 /**
  * Created by aMiir on 1/31/21
@@ -46,41 +41,11 @@ abstract class ParentFragment<T : BaseViewModel, E : ViewDataBinding> : BaseFrag
                 }
             }
         })
-        viewModel.getLocationState().observe(this, {
-            locationState(it)
-        })
-        viewModel.onLocationUpdate().observe(this, {
-            locationUpdate(it)
-        })
-        viewModel.locationPermissionRequired().observe(this, {
-            permissionsRequest(it.toTypedArray(), granted = {
-                requestStartUpdatingLocation()
-            }, denied = {
-                /**
-                 * cannot update location
-                 */
-            })
-        })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         lifecycle.addObserver(viewModel)
-    }
-
-    open fun locationState(state: LocationState) {}
-
-    open fun locationUpdate(location: Coordinate) {}
-
-    private fun requestStartUpdatingLocation(requestEnableSetting: Boolean? = true) {
-        viewModel.requestStartUpdatingLocation(
-            WeakReference(requireActivity()),
-            requestEnableSetting
-        )
-    }
-
-    private fun requestStopUpdatingLocation() {
-        viewModel.requestStopUpdatingLocation()
     }
 
 }

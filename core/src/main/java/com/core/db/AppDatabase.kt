@@ -6,16 +6,16 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.core.dto.TestDto
+import com.core.dto.ChildDto
 
 /**
  * Main database description.
  */
 @Database(
     entities = [
-        TestDto::class
+        ChildDto::class
     ],
-    version = 1, exportSchema = false
+    version = 2, exportSchema = false
 )
 @TypeConverters(OperatorTypeConverters::class)
 abstract class AppDatabase : RoomDatabase() {
@@ -53,6 +53,6 @@ abstract class AppDatabase : RoomDatabase() {
         }
     }
 
-    abstract fun testDao(): TestDao
+    abstract fun childDao(): ChildDao
 
 }

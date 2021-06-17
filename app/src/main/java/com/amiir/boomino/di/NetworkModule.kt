@@ -4,7 +4,6 @@ import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import com.amiir.boomino.util.ConnectivityInterceptor
-import com.core.utils.SettingManager
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
@@ -18,7 +17,6 @@ import java.security.cert.CertificateException
 import java.security.cert.X509Certificate
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
-import javax.net.ssl.HostnameVerifier
 import javax.net.ssl.SSLContext
 import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
@@ -37,10 +35,9 @@ class NetworkModule {
     @Singleton
     @Provides
     fun provideConnectivityInterceptor(
-        app: Application,
-        settingManager: SettingManager
+        app: Application
     ): ConnectivityInterceptor {
-        return ConnectivityInterceptor(app, settingManager)
+        return ConnectivityInterceptor(app)
     }
 
     @Singleton
@@ -74,7 +71,8 @@ class NetworkModule {
 
         val builder = OkHttpClient.Builder()
         builder.sslSocketFactory(sslSocketFactory, trustAllCerts[0] as X509TrustManager)
-        builder.hostnameVerifier(HostnameVerifier { hostname, session -> true })
+        builder.hostnameVerifier { _, _ -> true }
+        builder.addInterceptor(connectivityInterceptor)
         builder.addInterceptor(HttpLoggingInterceptor().apply {
             this.setLevel(HttpLoggingInterceptor.Level.BODY)
         })
@@ -84,14 +82,6 @@ class NetworkModule {
 
         return builder.build()
 
-//        return OkHttpClient.Builder()
-//            .connectTimeout(1, TimeUnit.MINUTES)
-//            .readTimeout(1, TimeUnit.MINUTES)
-//            .writeTimeout(1, TimeUnit.MINUTES)
-////            .addInterceptor(connectivityInterceptor)
-//            .addInterceptor(HttpLoggingInterceptor().apply {
-//                this.setLevel(HttpLoggingInterceptor.Level.BODY)
-//            }).build()
     }
 
     @Provides

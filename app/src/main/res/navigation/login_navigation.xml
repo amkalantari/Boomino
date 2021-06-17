@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainLoginFragment"
-        android:name="com.amiir.boomino.ui.login.MainLoginFragment"
+        android:name="com.amiir.boomino.ui.login.fragment.MainLoginFragment"
         android:label="Main Login"
         tools:layout="@layout/fragment_main_login">
 
@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/parentLoginFragment"
-        android:name="com.amiir.boomino.ui.login.ParentLoginFragment"
+        android:name="com.amiir.boomino.ui.login.fragment.ParentLoginFragment"
         android:label="Parent Login"
         tools:layout="@layout/fragment_parent_login">
 
@@ -31,7 +31,7 @@
 
     <fragment
         android:id="@+id/childLoginFragment"
-        android:name="com.amiir.boomino.ui.login.ChildLoginFragment"
+        android:name="com.amiir.boomino.ui.login.fragment.ChildLoginFragment"
         android:label="Child Login"
         tools:layout="@layout/fragment_child_login">
 

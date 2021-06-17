@@ -9,17 +9,17 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.amiir.boomino.R
-import com.amiir.boomino.databinding.AdapterItemFilterBinding
-import com.amiir.boomino.databinding.LayoutFilterCheckboxListBinding
+import com.amiir.boomino.databinding.ItemLayoutChechboxPackageBinding
+import com.amiir.boomino.databinding.LayoutPackageCheckboxListBinding
 import com.core.base.BaseHolder
 import com.core.dto.PackageDto
 
-class FilterCheckBoxList : FrameLayout {
+class PackageCheckBoxList : FrameLayout {
 
     private lateinit var adapter: CheckBoxItemAdapter
     private var selectedItems = mutableListOf<String>()
 
-    lateinit var binding: LayoutFilterCheckboxListBinding
+    lateinit var binding: LayoutPackageCheckboxListBinding
 
     constructor(context: Context) : super(context) {
         initialize(context)
@@ -42,7 +42,7 @@ class FilterCheckBoxList : FrameLayout {
         val inflater = LayoutInflater.from(context)
 
         binding = DataBindingUtil
-            .inflate(inflater, R.layout.layout_filter_checkbox_list, this, true)
+            .inflate(inflater, R.layout.layout_package_checkbox_list, this, true)
 
     }
 
@@ -96,7 +96,7 @@ class FilterCheckBoxList : FrameLayout {
         ): BaseHolder<PackageDto> {
             val inflater = LayoutInflater.from(parent.context)
             return ProductViewHolder(
-                AdapterItemFilterBinding.inflate(
+                ItemLayoutChechboxPackageBinding.inflate(
                     inflater,
                     parent,
                     false
@@ -109,7 +109,7 @@ class FilterCheckBoxList : FrameLayout {
         }
 
 
-        inner class ProductViewHolder(private val binding: AdapterItemFilterBinding) :
+        inner class ProductViewHolder(private val binding: ItemLayoutChechboxPackageBinding) :
             BaseHolder<PackageDto>(binding) {
             override fun bind(
                 value: PackageDto,

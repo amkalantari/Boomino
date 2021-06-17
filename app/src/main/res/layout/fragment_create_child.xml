@@ -32,7 +32,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:placeholderText="@string/user_name_place_holder" />
 
-        <com.amiir.boomino.widget.FilterCheckBoxList
+        <com.amiir.boomino.widget.PackageCheckBoxList
             android:id="@+id/checkbox_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"

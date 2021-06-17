@@ -22,6 +22,7 @@ class LoginActivity : ParentActivity<LoginViewModel, ActivityLoginBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         actionBar?.setHomeButtonEnabled(true)
+        actionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun getResourceLayoutId(): Int = R.layout.activity_login

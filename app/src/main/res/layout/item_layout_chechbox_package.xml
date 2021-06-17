@@ -29,7 +29,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:button="@drawable/filter_choicechips_checkbox"
+                android:button="@drawable/package_choice_checkbox"
                 android:checked="false"
                 android:clickable="false"
                 android:layout_margin="@dimen/dimen_16"

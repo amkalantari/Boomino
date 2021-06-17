@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.core.dto.ChildDto" />
+
+    </data>
+
+    <com.core.widget.CardViewCustom
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        style="@style/CardViewStyle"
+        android:layout_margin="@dimen/dimen_16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.core.widget.TextViewCustom
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/iranyekan_bold"
+            android:textSize="24sp"
+            android:textColor="@color/colorTextPrimary"
+            android:gravity="center"
+            android:text="@{item.userName}"
+            android:padding="@dimen/dimen_16"/>
+
+    </com.core.widget.CardViewCustom>
+</layout>

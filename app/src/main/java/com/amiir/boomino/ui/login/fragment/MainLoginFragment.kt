@@ -1,10 +1,11 @@
-package com.amiir.boomino.ui.login
+package com.amiir.boomino.ui.login.fragment
 
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.amiir.boomino.R
 import com.amiir.boomino.databinding.FragmentMainLoginBinding
+import com.amiir.boomino.ui.login.LoginViewModel
 import com.amiir.boomino.util.bindingAdapter.navigateSafe
 import com.core.parent.ParentSharedFragment
 

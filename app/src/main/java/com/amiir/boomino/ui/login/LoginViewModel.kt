@@ -2,6 +2,8 @@ package com.amiir.boomino.ui.login
 
 import androidx.lifecycle.*
 import com.core.base.BaseViewModel
+import com.core.db.ChildDao
+import com.core.dto.ChildDto
 import com.core.dto.LoginRequestDto
 import com.core.dto.NetworkState
 import com.core.dto.ParentLoginResponse
@@ -17,13 +19,15 @@ abstract class LoginViewModel :
     BaseViewModel() {
 
     abstract fun getParentLoginResponse(): LiveData<ParentLoginResponse>
-
     abstract fun requestParentLogin(username: String, password: String)
+
+    abstract fun getChildList() : List<ChildDto>
 
 }
 
 class LoginViewModelImpl(
     private var settingManager: SettingManager,
+    private var childDao: ChildDao,
     private var accountRepository: AccountRepository,
 
     ) : LoginViewModel() {
@@ -51,14 +55,19 @@ class LoginViewModelImpl(
     override fun requestParentLogin(username: String, password: String) {
         parentLogin.postValue(LoginRequestDto(username, password))
     }
+
+    override fun getChildList(): List<ChildDto> {
+        return childDao.fetchAll()
+    }
 }
 
 class LoginViewModelFactory(
     private var settingManager: SettingManager,
+    private var childDao: ChildDao,
     private var accountRepository: AccountRepository
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         @Suppress("UNCHECKED_CAST")
-        return LoginViewModelImpl(settingManager, accountRepository) as T
+        return LoginViewModelImpl(settingManager, childDao,accountRepository) as T
     }
 }

@@ -8,14 +8,15 @@ import com.core.dto.PackageDto
 object PackageHelper {
 
     @JvmStatic
-    fun getPackages(context: Context): ArrayList<PackageDto> {
-        return getInstalledApps(false, context) /* false = no system packages */
+    fun getPackages(context: Context, blockList: List<String>): ArrayList<PackageDto> {
+        return getInstalledApps(false, context, blockList) /* false = no system packages */
     }
 
     @JvmStatic
     fun getInstalledApps(
         getSysPackages: Boolean,
-        context: Context
+        context: Context,
+        blockList: List<String>
     ): ArrayList<PackageDto> {
         val res: ArrayList<PackageDto> = ArrayList()
         val packs: List<PackageInfo> = context.packageManager.getInstalledPackages(0)
@@ -31,7 +32,14 @@ object PackageHelper {
                 p.versionCode,
                 p.applicationInfo.loadIcon(context.packageManager)
             )
-            res.add(newInfo)
+            var isBlock = false
+            blockList.forEach {
+                if (it == newInfo.appname){
+                    isBlock = true
+                }
+            }
+            if (!isBlock)
+                res.add(newInfo)
         }
         return res
     }

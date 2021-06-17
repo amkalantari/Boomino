@@ -44,21 +44,6 @@ abstract class ParentActivity<T : BaseViewModel, E : ViewDataBinding> : BaseActi
                 }
             }
         })
-        viewModel.getLocationState().observe(this, {
-            locationState(it)
-        })
-        viewModel.onLocationUpdate().observe(this, {
-            locationUpdate(it)
-        })
-        viewModel.locationPermissionRequired().observe(this, {
-            permissionsRequest(it.toTypedArray(), {
-                requestStartUpdatingLocation()
-            }, {
-                /**
-                 * cannot update location
-                 */
-            })
-        })
         lifecycle.addObserver(viewModel)
         viewModel.onCreated()
     }
@@ -69,19 +54,5 @@ abstract class ParentActivity<T : BaseViewModel, E : ViewDataBinding> : BaseActi
         }
         return super.onOptionsItemSelected(item)
     }
-
-    open fun requestStartUpdatingLocation(requestEnableSetting: Boolean? = true) {
-        viewModel.requestStartUpdatingLocation(WeakReference(this), requestEnableSetting)
-    }
-
-    open fun requestStopUpdatingLocation() {
-        viewModel.requestStopUpdatingLocation()
-    }
-
-    open fun onLocationPermissionGranted() {
-        viewModel.onPermissionGranted(WeakReference(this))
-    }
-
-    //(app as App).restartAndLogoutApplication(app.baseContext)
 
 }

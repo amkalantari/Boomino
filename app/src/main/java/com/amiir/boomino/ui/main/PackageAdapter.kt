@@ -12,10 +12,10 @@ class PackageAdapter :
     ListAdapter<PackageDto, BaseHolder<PackageDto>>(object : DiffUtil.ItemCallback<PackageDto>() {
 
         override fun areItemsTheSame(oldItem: PackageDto, newItem: PackageDto): Boolean =
-            oldItem == newItem
+            false
 
         override fun areContentsTheSame(oldItem: PackageDto, newItem: PackageDto): Boolean =
-            oldItem == newItem
+            false
 
     }) {
 

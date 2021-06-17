@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/appListFragment"
-        android:name="com.amiir.boomino.ui.main.AppListFragment"
+        android:name="com.amiir.boomino.ui.main.fragment.AppListFragment"
         android:label="App List"
         tools:layout="@layout/fragment_app_list">
 
@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/createChildFragment"
-        android:name="com.amiir.boomino.ui.main.CreateChildFragment"
+        android:name="com.amiir.boomino.ui.main.fragment.CreateChildFragment"
         android:label="Create Child"
         tools:layout="@layout/fragment_create_child">
 
