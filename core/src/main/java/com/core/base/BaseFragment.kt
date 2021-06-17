@@ -13,8 +13,6 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.ColorRes
-import androidx.annotation.StringRes
-import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -24,8 +22,6 @@ import com.core.R
 import com.core.dto.NetworkState
 import com.ethanhua.skeleton.Skeleton
 import com.ethanhua.skeleton.ViewSkeletonScreen
-import com.google.android.material.appbar.AppBarLayout
-import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.snackbar.Snackbar
 import timber.log.Timber
 
@@ -118,30 +114,6 @@ abstract class BaseFragment<E : ViewDataBinding> : Fragment() {
         return true
     }
 
-    open fun initToolbar(toolbar: Toolbar, @StringRes title: Int?, isDarkTheme: Boolean = false) {
-        if (isDarkTheme)
-            toolbar.setNavigationIcon(R.drawable.ic_back_white)
-        else
-            toolbar.setNavigationIcon(R.drawable.ic_back_black)
-        title?.let {
-            toolbar.title = getString(title)
-        }
-        toolbar.setNavigationOnClickListener {
-            requireActivity().onBackPressed()
-        }
-    }
-
-    open fun initToolbar(toolbar: Toolbar, title: String, isDarkTheme: Boolean = false) {
-        if (isDarkTheme)
-            toolbar.setNavigationIcon(R.drawable.ic_back_white)
-        else
-            toolbar.setNavigationIcon(R.drawable.ic_back_black)
-        toolbar.title = title
-        toolbar.setNavigationOnClickListener {
-            requireActivity().onBackPressed()
-        }
-    }
-
     open fun permissionsRequest(
         permissions: Array<String>,
         granted: PermissionGranted,
@@ -223,43 +195,6 @@ abstract class BaseFragment<E : ViewDataBinding> : Fragment() {
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
             window.statusBarColor = color
         }
-    }
-
-    open fun handleAppbarLayout(
-        appBarLayout: AppBarLayout,
-        collapsingToolbarLayout: CollapsingToolbarLayout,
-        toolbar: Toolbar?,
-        title: String? = "",
-        isCollapsed: (Boolean) -> Unit
-    ) {
-        val collapsingTitle = when (title) {
-            "" -> {
-                collapsingToolbarLayout.title.toString()
-            }
-            else -> {
-                title!!
-            }
-        }
-        appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { _, verticalOffset ->
-            isCollapsed(
-                when {
-                    Math.abs(verticalOffset) >= appBarLayout.totalScrollRange -> {
-                        collapsingToolbarLayout.title = collapsingTitle
-                        toolbar?.let {
-                            initToolbar(toolbar, null, false)
-                        }
-                        true
-                    }
-                    else -> {
-                        collapsingToolbarLayout.title = " "
-                        toolbar?.let {
-                            initToolbar(toolbar, null, true)
-                        }
-                        false
-                    }
-                }
-            )
-        })
     }
 
     override fun onRequestPermissionsResult(

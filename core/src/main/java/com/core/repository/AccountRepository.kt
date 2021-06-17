@@ -4,7 +4,7 @@ import android.content.ContentValues.TAG
 import com.core.api.AccountApi
 import com.core.base.BaseObserver
 import com.core.base.BaseObserver.Companion.networkStatus
-import com.core.base.ResponseAsync
+import com.core.base.Response
 import com.core.dto.LoginRequestDto
 import com.core.dto.ParentLoginResponse
 import com.core.utils.SingleLiveEvent
@@ -15,12 +15,12 @@ import com.core.utils.SingleLiveEvent
  * Drunk, Fix Later
  */
 abstract class AccountRepository : BaseObserver {
-    abstract fun parentLogin(loginRequestDto: LoginRequestDto): ResponseAsync<ParentLoginResponse>
+    abstract fun parentLogin(loginRequestDto: LoginRequestDto): Response<ParentLoginResponse>
 }
 
 class AccountRepositoryImpl(private val accountApi: AccountApi) : AccountRepository() {
 
-    override fun parentLogin(loginRequestDto: LoginRequestDto): ResponseAsync<ParentLoginResponse> {
+    override fun parentLogin(loginRequestDto: LoginRequestDto): Response<ParentLoginResponse> {
         val tag = "${this::class.java.simpleName}_parentLogin"
         val data = SingleLiveEvent<ParentLoginResponse>()
         showProgressAction(tag)
@@ -34,7 +34,7 @@ class AccountRepositoryImpl(private val accountApi: AccountApi) : AccountReposit
             hideProgressAction(TAG)
             handleError(TAG, it)
         })
-        return ResponseAsync(data, networkStatus)
+        return Response(data, networkStatus)
     }
 
 }

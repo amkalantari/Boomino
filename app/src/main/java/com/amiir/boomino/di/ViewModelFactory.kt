@@ -4,7 +4,6 @@ import com.amiir.boomino.ui.login.LoginViewModelFactory
 import com.amiir.boomino.ui.main.MainViewModelFactory
 import com.core.db.AppDatabase
 import com.core.repository.AccountRepository
-import com.core.utils.SettingManager
 import dagger.Module
 import dagger.Provides
 
@@ -14,11 +13,10 @@ class ViewModelFactory {
 
     @Provides
     fun provideLoginViewModelFactory(
-        settingManager: SettingManager,
         appDatabase: AppDatabase,
         accountRepository: AccountRepository
     ): LoginViewModelFactory {
-        return LoginViewModelFactory(settingManager, appDatabase.childDao(), accountRepository)
+        return LoginViewModelFactory(appDatabase.childDao(), accountRepository)
     }
 
     @Provides

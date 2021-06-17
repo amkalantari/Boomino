@@ -1,4 +1,4 @@
-package com.amiir.boomino.ui.login.adapter
+package com.amiir.boomino.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

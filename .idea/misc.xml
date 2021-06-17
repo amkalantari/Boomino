@@ -7,6 +7,8 @@
         <entry key="app/src/main/res/drawable-v24/filter_choicechips_checkbox.xml" value="0.1255" />
         <entry key="app/src/main/res/drawable-v24/ic_filter_check_selected.xml" value="0.1255" />
         <entry key="app/src/main/res/drawable/background_border_primary.xml" value="0.2865" />
+        <entry key="app/src/main/res/drawable/filter_choicechips_checkbox.xml" value="0.1715" />
+        <entry key="app/src/main/res/drawable/ic_filter_check_selected.xml" value="0.1715" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.3374094202898551" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2776268115942029" />
         <entry key="app/src/main/res/layout/adapter_item_filter.xml" value="0.18161094224924013" />
@@ -20,6 +22,22 @@
         <entry key="app/src/main/res/layout/item_layout_child.xml" value="0.3374094202898551" />
         <entry key="app/src/main/res/layout/item_layout_package.xml" value="0.335" />
         <entry key="app/src/main/res/layout/layout_filter_checkbox_list.xml" value="0.18161094224924013" />
+        <entry key="core/src/main/res/drawable/background_button_common.xml" value="0.1715" />
+        <entry key="core/src/main/res/drawable/background_button_disable.xml" value="0.1715" />
+        <entry key="core/src/main/res/drawable/ic_back_white.xml" value="0.1715" />
+        <entry key="core/src/main/res/drawable/ic_checked_checkbox.xml" value="0.1715" />
+        <entry key="core/src/main/res/drawable/ic_confirm_lenght.xml" value="0.1715" />
+        <entry key="core/src/main/res/drawable/ic_expand_arrow.xml" value="0.1715" />
+        <entry key="core/src/main/res/drawable/ic_icons_checkmark.xml" value="0.1715" />
+        <entry key="core/src/main/res/drawable/ic_icons_close.xml" value="0.1715" />
+        <entry key="core/src/main/res/drawable/ic_info.xml" value="0.1715" />
+        <entry key="core/src/main/res/drawable/ic_logo_skeleton.xml" value="0.1715" />
+        <entry key="core/src/main/res/drawable/ic_marker.xml" value="0.1715" />
+        <entry key="core/src/main/res/drawable/ic_unchecked_checkbox.xml" value="0.1715" />
+        <entry key="core/src/main/res/layout/layout_paging_load_state.xml" value="0.16485507246376813" />
+        <entry key="core/src/main/res/layout/layout_skeleton.xml" value="0.18161094224924013" />
+        <entry key="core/src/main/res/layout/menu_layout_close_dialog.xml" value="0.18161094224924013" />
+        <entry key="core/src/main/res/menu/menu_selectable_dialog.xml" value="0.20729166666666668" />
       </map>
     </option>
   </component>

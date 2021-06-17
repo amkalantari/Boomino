@@ -6,14 +6,9 @@ import com.amiir.boomino.R
 import com.amiir.boomino.databinding.ActivityLoginBinding
 import com.amiir.boomino.di.DaggerAppComponent
 import com.core.parent.ParentActivity
-import com.core.utils.SettingManager
 import javax.inject.Inject
 
 class LoginActivity : ParentActivity<LoginViewModel, ActivityLoginBinding>() {
-
-
-    @Inject
-    lateinit var settingManager: SettingManager
 
     @Inject
     lateinit var factory: LoginViewModelFactory

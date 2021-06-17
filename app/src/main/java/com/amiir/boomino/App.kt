@@ -1,30 +1,15 @@
 package com.amiir.boomino
 
-import android.content.Intent
-import android.os.Handler
-import android.os.Looper
-import com.amiir.boomino.ui.main.MainActivity
-import com.core.base.BaseApp
-import com.core.db.AppDatabase
-import com.core.utils.SettingManager
 import com.amiir.boomino.di.DaggerAppComponent
-import io.reactivex.Completable
+import com.core.base.BaseApp
 import io.reactivex.plugins.RxJavaPlugins
 import timber.log.Timber
-import javax.inject.Inject
-import kotlin.system.exitProcess
 
 /**
  * Created by aMiir on 9/31/21
  * Drunk, Fix Later
  */
 open class App : BaseApp() {
-
-    @Inject
-    lateinit var tazminchiDb: AppDatabase
-
-    @Inject
-    lateinit var settingManager: SettingManager
 
     private fun handleUncaughtExceptionHandler(e: Throwable) {
         try {
@@ -54,26 +39,6 @@ open class App : BaseApp() {
         }
 
     }
-
-
-    override fun logoutAndRestart() {
-        settingManager.setRegister(false)
-        settingManager.setRefreshToken("")
-        settingManager.setAccessToken("")
-        addExecutorThreads(Completable.fromAction {
-            tazminchiDb.clearAllTables()
-        }, {
-            Handler(Looper.getMainLooper()).postDelayed({
-                val registerActivity = Intent(applicationContext, MainActivity::class.java)
-                registerActivity.flags =
-                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                applicationContext.startActivity(registerActivity)
-                android.os.Process.killProcess(android.os.Process.myPid())
-                exitProcess(0)
-            }, 1000)
-        })
-    }
-
 
     override fun onCreate() {
         super.onCreate()

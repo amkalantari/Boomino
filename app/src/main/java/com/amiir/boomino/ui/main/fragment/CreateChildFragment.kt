@@ -29,13 +29,17 @@ class CreateChildFragment : ParentSharedFragment<MainViewModel, FragmentCreateCh
         binding.checkboxList.setItems(PackageHelper.getPackages(requireContext(), mutableListOf()))
 
         binding.createChildButton.setOnDelayClickListener {
-            viewModel.insertChild(
-                ChildDto(
-                    userName = binding.userNameTextInput.getText(),
-                    blockList = selectedApp
+            if (binding.userNameTextInput.getText() != "") {
+                viewModel.insertChild(
+                    ChildDto(
+                        userName = binding.userNameTextInput.getText(),
+                        blockList = selectedApp
+                    )
                 )
-            )
-            onBackPressed()
+                onBackPressed()
+            }else{
+                showMessage("Username should not empty")
+            }
         }
 
 

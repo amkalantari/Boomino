@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View
 import com.amiir.boomino.R
 import com.amiir.boomino.databinding.FragmentChildLoginBinding
-import com.amiir.boomino.ui.login.adapter.ChildAdapter
+import com.amiir.boomino.ui.adapter.ChildAdapter
 import com.amiir.boomino.ui.login.LoginViewModel
 import com.amiir.boomino.ui.main.MainActivity
 import com.core.parent.ParentSharedFragment
