@@ -8,17 +8,17 @@ ext.sdk = [
 ]
 
 ext.versions = [
-        kotlin           : '1.5.10',
+        kotlin           : '1.4.0',
 
-        appCompat        : '1.3.0',
-        constraint       : '2.0.4',
+        appCompat        : '1.2.0',
+        constraint       : '2.0.1',
         lifeCycle        : '2.3.1',
 
         room             : '2.3.0',
 
         dagger           : '2.22',
         daggerKapt       : '2.20',
-        core_ktx         : '1.5.0',
+        core_ktx         : '1.3.2',
 
         glide            : '4.9.0',
         paging           : '3.0.0',

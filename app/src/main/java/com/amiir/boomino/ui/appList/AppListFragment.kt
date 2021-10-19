@@ -1,11 +1,11 @@
-package com.amiir.boomino.ui.main.fragment
+package com.amiir.boomino.ui.appList
 
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.amiir.boomino.R
 import com.amiir.boomino.databinding.FragmentAppListBinding
-import com.amiir.boomino.ui.adapter.PackageAdapter
+import com.amiir.boomino.ui.login.LoginActivity.Companion.PARENT
 import com.amiir.boomino.ui.main.MainViewModel
 import com.amiir.boomino.util.PackageHelper
 import com.amiir.boomino.util.bindingAdapter.navigateSafe
@@ -22,7 +22,7 @@ class AppListFragment : ParentSharedFragment<MainViewModel, FragmentAppListBindi
 
         binding.list.adapter = adapterPackage
 
-        if (viewModel.getUsername() == "parent") {
+        if (viewModel.getUsername() == PARENT) {
             binding.createChildButton.visibility = View.VISIBLE
             adapterPackage.submitList(
                 PackageHelper.getPackages(

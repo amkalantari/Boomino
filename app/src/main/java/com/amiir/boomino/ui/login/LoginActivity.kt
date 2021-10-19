@@ -13,6 +13,10 @@ class LoginActivity : ParentActivity<LoginViewModel, ActivityLoginBinding>() {
     @Inject
     lateinit var factory: LoginViewModelFactory
 
+    companion object{
+        const val USERNAME = "username"
+        const val PARENT = "parent"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +36,5 @@ class LoginActivity : ParentActivity<LoginViewModel, ActivityLoginBinding>() {
             .build()
             .inject(this)
     }
-
 
 }

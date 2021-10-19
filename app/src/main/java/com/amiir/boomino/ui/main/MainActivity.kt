@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.amiir.boomino.R
 import com.amiir.boomino.databinding.ActivityMainBinding
 import com.amiir.boomino.di.DaggerAppComponent
+import com.amiir.boomino.ui.login.LoginActivity.Companion.USERNAME
 import com.core.parent.ParentActivity
 import javax.inject.Inject
 
@@ -17,8 +18,8 @@ class MainActivity : ParentActivity<MainViewModel, ActivityMainBinding>() {
         super.onCreate(savedInstanceState)
         actionBar?.setHomeButtonEnabled(true)
 
-        if (intent.hasExtra("username")){
-            val username = intent.getStringExtra("username")!!
+        if (intent.hasExtra(USERNAME)) {
+            val username = intent.getStringExtra(USERNAME)!!
             viewModel.setUsername(username)
         }
 

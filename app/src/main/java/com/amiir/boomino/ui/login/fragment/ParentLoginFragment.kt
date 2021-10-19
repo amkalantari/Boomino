@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.View
 import com.amiir.boomino.R
 import com.amiir.boomino.databinding.FragmentParentLoginBinding
+import com.amiir.boomino.ui.login.LoginActivity.Companion.PARENT
+import com.amiir.boomino.ui.login.LoginActivity.Companion.USERNAME
 import com.amiir.boomino.ui.login.LoginViewModel
 import com.amiir.boomino.ui.main.MainActivity
 import com.amiir.boomino.util.KeyBoardHelper
@@ -26,8 +28,8 @@ class ParentLoginFragment : ParentSharedFragment<LoginViewModel, FragmentParentL
             if (!isFirstTime) {
                 startActivity(
                     Intent(requireActivity(), MainActivity::class.java).putExtra(
-                        "username",
-                        "parent"
+                        USERNAME,
+                        PARENT
                     )
                 )
                 isFirstTime = true

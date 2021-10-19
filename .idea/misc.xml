@@ -12,7 +12,7 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.3374094202898551" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2776268115942029" />
         <entry key="app/src/main/res/layout/adapter_item_filter.xml" value="0.18161094224924013" />
-        <entry key="app/src/main/res/layout/fragment_app_list.xml" value="0.18161094224924013" />
+        <entry key="app/src/main/res/layout/fragment_app_list.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_block_list.xml" value="0.18161094224924013" />
         <entry key="app/src/main/res/layout/fragment_child_login.xml" value="0.3374094202898551" />
         <entry key="app/src/main/res/layout/fragment_create_child.xml" value="0.18161094224924013" />
@@ -38,6 +38,8 @@
         <entry key="core/src/main/res/layout/layout_skeleton.xml" value="0.18161094224924013" />
         <entry key="core/src/main/res/layout/menu_layout_close_dialog.xml" value="0.18161094224924013" />
         <entry key="core/src/main/res/menu/menu_selectable_dialog.xml" value="0.20729166666666668" />
+        <entry key="skeleton/src/main/res/layout/layout_default_item_skeleton.xml" value="0.4036458333333333" />
+        <entry key="skeleton/src/main/res/layout/layout_shimmer.xml" value="0.4036458333333333" />
       </map>
     </option>
   </component>

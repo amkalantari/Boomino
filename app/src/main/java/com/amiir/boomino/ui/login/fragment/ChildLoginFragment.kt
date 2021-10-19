@@ -5,17 +5,20 @@ import android.os.Bundle
 import android.view.View
 import com.amiir.boomino.R
 import com.amiir.boomino.databinding.FragmentChildLoginBinding
-import com.amiir.boomino.ui.adapter.ChildAdapter
+import com.amiir.boomino.ui.login.LoginActivity.Companion.USERNAME
 import com.amiir.boomino.ui.login.LoginViewModel
+import com.amiir.boomino.ui.login.adapter.ChildAdapter
 import com.amiir.boomino.ui.main.MainActivity
 import com.core.parent.ParentSharedFragment
 
 class ChildLoginFragment : ParentSharedFragment<LoginViewModel, FragmentChildLoginBinding>() {
 
     private val adapter: ChildAdapter by lazy {
-        ChildAdapter{
-            startActivity(Intent(requireActivity(), MainActivity::class.java)
-                .putExtra("username",it.userName))
+        ChildAdapter {
+            startActivity(
+                Intent(requireActivity(), MainActivity::class.java)
+                    .putExtra(USERNAME, it.userName)
+            )
         }
     }
 
@@ -28,7 +31,14 @@ class ChildLoginFragment : ParentSharedFragment<LoginViewModel, FragmentChildLog
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.list.adapter = adapter
-        adapter.submitList(viewModel.getChildList())
+
+        val list = viewModel.getChildList()
+        if (list.isNotEmpty()) {
+            adapter.submitList(viewModel.getChildList())
+        } else {
+            binding.list.visibility = View.GONE
+            binding.emptyLayout.visibility = View.VISIBLE
+        }
     }
 
 }

@@ -38,16 +38,6 @@ android {
     }
     flavorDimensions 'default'
 
-
-    lintOptions {
-        disable 'TypographyFractions','TypographyQuotes'
-        enable 'RtlHardcoded','RtlCompat', 'RtlEnabled'
-        checkOnly 'NewApi', 'InlinedApi'
-        quiet true
-        abortOnError false
-        ignoreWarnings true
-    }
-
     kotlinOptions {
         jvmTarget = "1.8"
         freeCompilerArgs += ["-Xopt-in=kotlin.RequiresOptIn"]
@@ -60,6 +50,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
 }
 
 dependencies {

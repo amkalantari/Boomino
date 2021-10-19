@@ -1,4 +1,4 @@
-package com.amiir.boomino.ui.main.fragment
+package com.amiir.boomino.ui.createChild
 
 import android.os.Bundle
 import android.view.View
